@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GreetingController {
+public class AnyController {
 
     @Autowired
     private AnyService anyService;
 
-    @GetMapping("/greeting")
-    public AnyModel greeting() {
+    @GetMapping("/any")
+    public AnyModel any() {
         AnyModel anyModel = anyService.executeSubstringForBusinessRules();
         return anyModel;
     }
