@@ -1,2 +1,2 @@
 # clean-architecture
-Um projeto baseando-se (ou tentando rs) no livro Arquitetura Limpa escrito por  Robert C. Martin
+Um projeto de exemplo baseando-se (ou tentando rs) no livro Arquitetura Limpa escrito por  Robert C. Martin
