@@ -6,7 +6,7 @@ include 'database-impl'
 include 'gateway-interface'
 include 'gateway-impl'
 include 'entities'
-include 'web-layer'
 include 'presenters'
 include 'web-controller'
+include 'application'
 
