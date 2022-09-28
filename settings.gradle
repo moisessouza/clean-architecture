@@ -1,0 +1,9 @@
+rootProject.name = 'clean-architecture'
+include 'use-case-interface'
+include 'use-case-impl'
+include 'database-interface'
+include 'database-impl'
+include 'gateway-interface'
+include 'gateway-impl'
+include 'entities'
+
