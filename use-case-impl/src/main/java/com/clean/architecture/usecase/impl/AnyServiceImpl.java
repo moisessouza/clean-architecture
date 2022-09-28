@@ -6,7 +6,9 @@ import com.clean.architecture.dto.AnyDTO;
 import com.clean.architecture.presenters.models.AnyModel;
 import com.clean.architecture.presenters.AnyPresenter;
 import com.clean.architecture.usecase.AnyService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AnyServiceImpl implements AnyService {
 
     public AnyGateway anyGateway;

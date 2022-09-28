@@ -1,6 +1,8 @@
 import com.clean.architecture.orm.AnyORM;
 import com.clean.architecture.queries.DBAny;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DBAnyImpl implements DBAny {
 
     @Override
