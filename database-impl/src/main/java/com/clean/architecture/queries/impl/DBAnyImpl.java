@@ -1,3 +1,5 @@
+package com.clean.architecture.queries.impl;
+
 import com.clean.architecture.orm.AnyORM;
 import com.clean.architecture.queries.DBAny;
 import org.springframework.stereotype.Service;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnyGatewayImpl implements AnyGateway {
 
-    private DBAny dbAny;
+    public DBAny dbAny;
 
     public AnyGatewayImpl(DBAny dbAny) {
         this.dbAny = dbAny;
