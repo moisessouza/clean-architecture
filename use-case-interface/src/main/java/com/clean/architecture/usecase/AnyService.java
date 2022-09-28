@@ -1,5 +1,7 @@
 package com.clean.architecture.usecase;
 
+import com.clean.architecture.presenters.models.AnyModel;
+
 public interface AnyService {
-    String executeSubstringForBusinessRules();
+    AnyModel executeSubstringForBusinessRules();
 }
