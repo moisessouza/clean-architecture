@@ -40,7 +40,7 @@ public class AnyServiceImpl implements AnyService {
     }
 
     @Override
-    public AnyOutput saveAndExecuteSubstringForBusinessRules(AnyInput anyInput) {
+    public AnyOutput save(AnyInput anyInput) {
 
         AnyEntity entity = new AnyEntity();
         entity.setValue(anyInput.getValue());

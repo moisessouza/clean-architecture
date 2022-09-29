@@ -1,6 +1,5 @@
 package com.clean.architecture.restservice;
 
-import com.clean.architecture.presenters.models.AnyInput;
 import com.clean.architecture.presenters.models.AnyInputImpl;
 import com.clean.architecture.presenters.models.AnyOutput;
 import com.clean.architecture.usecase.AnyService;
@@ -28,7 +27,7 @@ public class AnyController {
         AnyInputImpl input = new AnyInputImpl();
         input.setValue(value);
 
-        AnyOutput anyOutput = anyService.saveAndExecuteSubstringForBusinessRules(input);
+        AnyOutput anyOutput = anyService.save(input);
 
         return anyOutput;
     }
