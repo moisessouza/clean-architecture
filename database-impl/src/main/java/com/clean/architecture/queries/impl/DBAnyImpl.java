@@ -16,4 +16,12 @@ public class DBAnyImpl implements DBAny {
         return value;
 
     }
+
+    @Override
+    public AnyORM saveAny(AnyORM anyORM) {
+        // .....
+        // SAVE
+        // ....
+        return anyORM;
+    }
 }

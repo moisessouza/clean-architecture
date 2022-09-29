@@ -6,4 +6,6 @@ import com.clean.architecture.orm.AnyORM;
 public interface AnyGateway {
     AnyEntity findAny();
 
+    AnyEntity saveAny(AnyEntity anyEntity);
+
 }

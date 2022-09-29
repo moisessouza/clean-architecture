@@ -2,12 +2,12 @@ package com.clean.architecture.presenters.models;
 
 import com.clean.architecture.dto.AnyDTO;
 
-public class AnyModelImpl implements AnyModel {
+public class AnyOutputImpl implements AnyOutput {
 
 
-    public AnyModelImpl () {}
+    public AnyOutputImpl() {}
 
-    public AnyModelImpl(AnyDTO dto) {
+    public AnyOutputImpl(AnyDTO dto) {
         this.value = dto.getValue();
     }
 

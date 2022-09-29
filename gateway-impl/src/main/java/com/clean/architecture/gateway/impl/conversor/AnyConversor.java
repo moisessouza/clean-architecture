@@ -11,4 +11,10 @@ public class AnyConversor {
         return value;
     }
 
+    public static final AnyORM convertToORM(AnyEntity entity) {
+        AnyORM value = new AnyORM();
+        value.setValue(entity.getValue());
+        return value;
+    }
+
 }

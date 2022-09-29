@@ -22,4 +22,11 @@ public class AnyGatewayImpl implements AnyGateway {
         return AnyConversor.convertToEntity(any);
     }
 
+    @Override
+    public AnyEntity saveAny(AnyEntity anyEntity) {
+        AnyORM anyORM = AnyConversor.convertToORM(anyEntity);
+        dbAny.saveAny(anyORM);
+        return AnyConversor.convertToEntity(anyORM);
+    }
+
 }

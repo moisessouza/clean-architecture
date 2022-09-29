@@ -1,7 +1,10 @@
 package com.clean.architecture.usecase;
 
-import com.clean.architecture.presenters.models.AnyModel;
+import com.clean.architecture.presenters.models.AnyInput;
+import com.clean.architecture.presenters.models.AnyOutput;
 
 public interface AnyService {
-    AnyModel executeSubstringForBusinessRules();
+    AnyOutput executeSubstringForBusinessRules();
+
+    AnyOutput saveAndExecuteSubstringForBusinessRules(AnyInput anyInput);
 }
