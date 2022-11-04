@@ -1,4 +1,4 @@
-rootProject.name = 'plataforma-works'
+rootProject.name = 'plataforma-workers'
 include 'use-case-interface'
 include 'use-case-impl'
 include 'database-interface'
@@ -8,5 +8,5 @@ include 'gateway-impl'
 include 'entities'
 include 'presenters'
 include 'rest-controller'
-include 'application'
+include 'rest-application'
 
