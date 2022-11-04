@@ -15,7 +15,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation project(":web-controller")
+	implementation project(":rest-controller")
 	implementation project(":use-case-interface")
 	implementation project(":use-case-impl")
 	implementation project(":gateway-interface")

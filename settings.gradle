@@ -1,4 +1,4 @@
-rootProject.name = 'clean-architecture'
+rootProject.name = 'plataforma-works'
 include 'use-case-interface'
 include 'use-case-impl'
 include 'database-interface'
@@ -7,6 +7,6 @@ include 'gateway-interface'
 include 'gateway-impl'
 include 'entities'
 include 'presenters'
-include 'web-controller'
+include 'rest-controller'
 include 'application'
 
