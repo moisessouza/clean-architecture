@@ -9,4 +9,6 @@ include 'entities'
 include 'presenters'
 include 'rest-controller'
 include 'rest-application'
+include 'web-application'
+include 'web-controller'
 
