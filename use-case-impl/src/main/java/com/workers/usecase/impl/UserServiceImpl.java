@@ -23,13 +23,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserOutput save(UserInput userInput) {
 
-        UserOutput output = verifyIfEmailContainsError(userInput.getEmail());
+        UserOutput output = verifyIfEmailContainsError(userInput);
 
         if (output.hasError()) {
             return output;
         }
 
-        output = verifyIfPasswordContainsError(userInput.getPassword());
+        output = verifyIfPasswordContainsError(userInput);
 
         if (output.hasError()) {
             return output;
@@ -41,24 +41,24 @@ public class UserServiceImpl implements UserService {
 
         userGateway.save(entity);
 
-        return userPresenter.createSuccess("Registro de usuário realizado com sucesso!");
+        return userPresenter.createSuccess(userInput,"Registro de usuário realizado com sucesso!");
 
     }
 
-    private UserOutput verifyIfPasswordContainsError(String password) {
+    private UserOutput verifyIfEmailContainsError(UserInput input) {
 
-        if (!StringUtils.hasText(password)) {
-            return userPresenter.createError("Senha não pode ser vazia");
+        if (!StringUtils.hasText(input.getEmail())) {
+            return userPresenter.createError(input, "Email não pode ser vazio");
         }
 
         return userPresenter.createValidateSuccess();
 
     }
 
-    private UserOutput verifyIfEmailContainsError(String email) {
+    private UserOutput verifyIfPasswordContainsError(UserInput input) {
 
-        if (!StringUtils.hasText(email)) {
-            return userPresenter.createError("Email não pode ser vazio");
+        if (!StringUtils.hasText(input.getPassword())) {
+            return userPresenter.createError(input,"Senha não pode ser vazia");
         }
 
         return userPresenter.createValidateSuccess();

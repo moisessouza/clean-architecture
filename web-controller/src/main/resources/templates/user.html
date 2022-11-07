@@ -12,11 +12,11 @@
 
     <label>email</label>
     <br>
-    <input type="email" name="email">
+    <input type="email" name="email" th:value="${user.email}">
     <br>
     <label>password</label>
     <br>
-    <input type="text" name="password">
+    <input type="text" name="password" th:value="${user.password}">
     <br>
     <button type="submit">Salvar</button>
 

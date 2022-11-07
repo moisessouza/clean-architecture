@@ -23,9 +23,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
-    public String index() {
-        return "user";
+    @GetMapping("/")
+    public ModelAndView index() {
+        return new ModelAndView("user", "user", new UserOutputImpl());
     }
 
     @PostMapping(value = "/user", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
