@@ -28,7 +28,7 @@ public class UserController {
         return new ModelAndView("user", "user", new UserOutputImpl());
     }
 
-    @PostMapping(value = "/user", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/user")
     public ModelAndView save(UserPostModel userPostModel) {
 
         UserInputImpl input = new UserInputImpl(userPostModel.getEmail(), userPostModel.getPassword());
