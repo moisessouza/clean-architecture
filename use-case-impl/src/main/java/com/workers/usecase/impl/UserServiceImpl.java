@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserOutput verifyIfPasswordContainsError(String password) {
+
         if (!StringUtils.hasText(password)) {
             return userPresenter.createError("Senha não pode ser vazia");
         }
