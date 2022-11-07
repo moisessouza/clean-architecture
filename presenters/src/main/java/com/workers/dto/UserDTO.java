@@ -1,7 +1,6 @@
-package com.workers.entities;
+package com.workers.dto;
 
-public class AnyEntity {
-
+public class UserDTO {
     private String value;
 
     public String getValue() {
@@ -11,4 +10,5 @@ public class AnyEntity {
     public void setValue(String value) {
         this.value = value;
     }
+
 }

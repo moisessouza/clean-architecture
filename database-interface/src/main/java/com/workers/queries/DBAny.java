@@ -1,9 +1,9 @@
 package com.workers.queries;
 
-import com.workers.orm.AnyORM;
+import com.workers.orm.UserORM;
 
 public interface DBAny {
-    AnyORM findAny();
+    UserORM findAny();
 
-    AnyORM saveAny(AnyORM anyORM);
+    UserORM save(UserORM userORM);
 }

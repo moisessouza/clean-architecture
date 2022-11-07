@@ -1,13 +1,13 @@
 package com.workers.presenters.models;
 
-import com.workers.dto.AnyDTO;
+import com.workers.dto.UserDTO;
 
-public class AnyOutputImpl implements AnyOutput {
+public class UserOutputImpl implements UserOutput {
 
 
-    public AnyOutputImpl() {}
+    public UserOutputImpl() {}
 
-    public AnyOutputImpl(AnyDTO dto) {
+    public UserOutputImpl(UserDTO dto) {
         this.value = dto.getValue();
     }
 

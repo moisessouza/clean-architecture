@@ -1,6 +1,6 @@
 package com.workers.presenters.models;
 
-public class AnyInputImpl implements AnyInput {
+public class UserInputImpl implements UserInput {
 
     private String value;
 

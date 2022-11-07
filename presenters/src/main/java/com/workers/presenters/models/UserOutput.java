@@ -1,4 +1,4 @@
 package com.workers.presenters.models;
 
-public interface AnyOutput {
+public interface UserOutput {
 }

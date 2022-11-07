@@ -1,6 +1,6 @@
 package com.workers.queries.impl;
 
-import com.workers.orm.AnyORM;
+import com.workers.orm.UserORM;
 import com.workers.queries.DBAny;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 public class DBAnyImpl implements DBAny {
 
     @Override
-    public AnyORM findAny() {
+    public UserORM findAny() {
 
-        AnyORM value = new AnyORM();
+        UserORM value = new UserORM();
         value.setValue("it is a sample of value");
 
         return value;
@@ -18,10 +18,10 @@ public class DBAnyImpl implements DBAny {
     }
 
     @Override
-    public AnyORM saveAny(AnyORM anyORM) {
+    public UserORM save(UserORM userORM) {
         // .....
         // SAVE
         // ....
-        return anyORM;
+        return userORM;
     }
 }

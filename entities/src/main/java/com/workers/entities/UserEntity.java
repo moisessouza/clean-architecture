@@ -1,7 +1,8 @@
-package com.workers.orm;
+package com.workers.entities;
 
-public class AnyORM {
-    String value;
+public class UserEntity {
+
+    private String value;
 
     public String getValue() {
         return value;

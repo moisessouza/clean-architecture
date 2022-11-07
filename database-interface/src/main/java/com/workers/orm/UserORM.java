@@ -1,7 +1,7 @@
-package com.workers.dto;
+package com.workers.orm;
 
-public class AnyDTO {
-    private String value;
+public class UserORM {
+    String value;
 
     public String getValue() {
         return value;
@@ -10,5 +10,4 @@ public class AnyDTO {
     public void setValue(String value) {
         this.value = value;
     }
-
 }
