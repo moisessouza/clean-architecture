@@ -18,6 +18,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/user")
+    public String index() {
+        return "user";
+    }
+
     @PostMapping("/user")
     public UserOutput save(@RequestBody String value) {
 
