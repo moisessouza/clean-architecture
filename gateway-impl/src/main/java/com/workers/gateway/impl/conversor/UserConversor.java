@@ -7,7 +7,7 @@ public class UserConversor {
 
     public static final UserEntity convertToEntity(UserORM orm) {
         UserEntity value = new UserEntity();
-        value.setValue(orm.getValue());
+        value.setEmail(orm.getValue());
         return value;
     }
 

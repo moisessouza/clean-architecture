@@ -1,14 +1,17 @@
 package com.workers.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class UserEntity {
 
-    private String value;
+    private String email;
+    private String password;
 
     public String getValue() {
-        return value;
+        return email;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
 }

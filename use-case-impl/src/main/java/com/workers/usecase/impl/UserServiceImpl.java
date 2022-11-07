@@ -2,7 +2,6 @@ package com.workers.usecase.impl;
 
 import com.workers.entities.UserEntity;
 import com.workers.gateway.UserGateway;
-import com.workers.dto.UserDTO;
 import com.workers.presenters.models.UserInput;
 import com.workers.presenters.models.UserOutput;
 import com.workers.presenters.UserPresenter;
@@ -37,12 +36,10 @@ public class UserServiceImpl implements UserService {
         }
 
         UserEntity entity = new UserEntity();
-        entity.setValue(userInput.getEmail());
+        entity.setEmail(userInput.getEmail());
+        entity.setPassword(userInput.getPassword());
 
         userGateway.save(entity);
-
-        UserDTO userDTO = new UserDTO();
-        userDTO.setValue(entity.getValue());
 
         return userPresenter.createSuccess("Registro de usuário realizado com sucesso!");
 
@@ -50,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     private UserOutput verifyIfPasswordContainsError(String password) {
         if (!StringUtils.hasText(password)) {
-            return userPresenter.createEmailError("Senha não pode ser vazia");
+            return userPresenter.createError("Senha não pode ser vazia");
         }
 
         return userPresenter.createValidateSuccess();
@@ -60,7 +57,7 @@ public class UserServiceImpl implements UserService {
     private UserOutput verifyIfEmailContainsError(String email) {
 
         if (!StringUtils.hasText(email)) {
-            return userPresenter.createEmailError("Email não pode ser vazio");
+            return userPresenter.createError("Email não pode ser vazio");
         }
 
         return userPresenter.createValidateSuccess();

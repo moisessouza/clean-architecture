@@ -1,6 +1,5 @@
 package com.workers.presenters.models;
 
-import com.workers.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
