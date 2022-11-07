@@ -1,13 +1,11 @@
 package com.workers.orm;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class UserORM {
-    String value;
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
+    private String email;
+    private String password;
 }

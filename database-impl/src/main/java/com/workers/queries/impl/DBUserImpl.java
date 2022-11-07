@@ -1,20 +1,17 @@
 package com.workers.queries.impl;
 
 import com.workers.orm.UserORM;
-import com.workers.queries.DBAny;
+import com.workers.queries.DBUser;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DBAnyImpl implements DBAny {
+public class DBUserImpl implements DBUser {
 
     @Override
-    public UserORM findAny() {
-
+    public UserORM findByEmail(String email) {
         UserORM value = new UserORM();
-        value.setValue("it is a sample of value");
-
+        value.setEmail(email);
         return value;
-
     }
 
     @Override
