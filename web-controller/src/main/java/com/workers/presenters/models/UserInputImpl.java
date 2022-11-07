@@ -2,15 +2,21 @@ package com.workers.presenters.models;
 
 public class UserInputImpl implements UserInput {
 
-    private String value;
+    private String email;
+    private String password;
 
-    public void setValue(String value) {
-        this.value = value;
+    public UserInputImpl (String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     @Override
-    public String getValue() {
-        return this.value;
+    public String getEmail() {
+        return email;
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
 }

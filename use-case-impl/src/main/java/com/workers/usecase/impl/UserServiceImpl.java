@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public UserOutput save(UserInput userInput) {
 
         UserEntity entity = new UserEntity();
-        entity.setValue(userInput.getValue());
+        entity.setValue(userInput.getEmail());
 
         userGateway.save(entity);
 
