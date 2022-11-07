@@ -1,23 +1,21 @@
 package com.workers.presenters.models;
 
 import com.workers.dto.UserDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class UserOutputImpl implements UserOutput {
 
-
-    public UserOutputImpl() {}
-
-    public UserOutputImpl(UserDTO dto) {
-        this.value = dto.getValue();
+    public boolean hasError;
+    public String message;
+    public String forward;
+    @Override
+    public boolean hasError() {
+        return hasError;
     }
 
-    private String value;
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }

@@ -8,8 +8,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserPresenterImpl implements UserPresenter {
+
+
     @Override
-    public UserOutput createModelPresenter(UserDTO modelPresenter) {
-        return new UserOutputImpl(modelPresenter);
+    public UserOutput createEmailError(String message) {
+        UserOutputImpl impl = new UserOutputImpl(true, message, "user");
+        return impl;
+    }
+
+    @Override
+    public UserOutput createPasswordError(String message) {
+        UserOutputImpl impl = new UserOutputImpl(true, message, "user");
+        return impl;
+    }
+
+    @Override
+    public UserOutput createValidateSuccess() {
+        return  new UserOutputImpl(false, null, null);
+    }
+
+    @Override
+    public UserOutput createSuccess(String message) {
+        UserOutputImpl impl = new UserOutputImpl(false, message, "user");
+        return impl;
     }
 }

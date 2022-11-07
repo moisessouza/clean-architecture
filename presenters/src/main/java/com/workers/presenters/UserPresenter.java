@@ -5,6 +5,9 @@ import com.workers.presenters.models.UserOutput;
 
 public interface UserPresenter {
 
-    UserOutput createModelPresenter(UserDTO modelDTO);
+    UserOutput createEmailError(String message);
+    UserOutput createPasswordError(String message);
+    UserOutput createValidateSuccess();
+    UserOutput createSuccess(String message);
 
 }
