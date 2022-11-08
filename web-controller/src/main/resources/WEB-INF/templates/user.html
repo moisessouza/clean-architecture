@@ -8,15 +8,15 @@
 
 <label th:text="${user.message}"/>
 <br>
-<form action="/user" method="post">
+<form th:action="@{/user}" th:object="${user}" method="post">
 
     <label>email</label>
     <br>
-    <input type="email" name="email" th:value="${user.email}">
+    <input type="email" name="email" th:value="*{email}">
     <br>
     <label>password</label>
     <br>
-    <input type="text" name="password" th:value="${user.password}">
+    <input type="text" name="password" th:value="*{password}">
     <br>
     <button type="submit">Salvar</button>
 
