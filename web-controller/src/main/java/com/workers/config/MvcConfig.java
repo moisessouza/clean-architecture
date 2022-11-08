@@ -3,6 +3,7 @@ package com.workers.config;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -42,5 +43,15 @@ public class MvcConfig {
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
+    }
+
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+
+        var source = new ResourceBundleMessageSource();
+        source.setBasenames("messages/label");
+        source.setUseCodeAsDefaultMessage(true);
+
+        return source;
     }
 }
