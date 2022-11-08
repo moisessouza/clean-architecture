@@ -2,7 +2,7 @@ package com.workers.gateway.impl;
 
 import com.workers.entities.UserEntity;
 import com.workers.gateway.UserGateway;
-import com.workers.gateway.impl.conversor.UserConversor;
+import com.workers.gateway.impl.converter.UserConverter;
 import com.workers.orm.UserORM;
 import com.workers.queries.DBUser;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,9 @@ public class UserGatewayImpl implements UserGateway {
 
     @Override
     public UserEntity save(UserEntity userEntity) {
-        UserORM userORM = UserConversor.convertToORM(userEntity);
+        UserORM userORM = UserConverter.convertToORM(userEntity);
         dbUser.save(userORM);
-        return UserConversor.convertToEntity(userORM);
+        return UserConverter.convertToEntity(userORM);
     }
 
 }

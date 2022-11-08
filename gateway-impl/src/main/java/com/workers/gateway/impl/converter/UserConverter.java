@@ -1,9 +1,9 @@
-package com.workers.gateway.impl.conversor;
+package com.workers.gateway.impl.converter;
 
 import com.workers.entities.UserEntity;
 import com.workers.orm.UserORM;
 
-public class UserConversor {
+public class UserConverter {
 
     public static final UserEntity convertToEntity(UserORM orm) {
         UserEntity value = new UserEntity();
