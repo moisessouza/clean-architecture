@@ -15,6 +15,7 @@ dependencies {
 
     implementation 'org.springframework.data:spring-data-jpa:2.7.5'
     implementation 'javax.persistence:javax.persistence-api:2.2'
+    implementation 'mysql:mysql-connector-java:8.0.31'
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
