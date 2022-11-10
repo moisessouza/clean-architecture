@@ -4,6 +4,7 @@ import com.workers.models.UserPostModel;
 import com.workers.presenters.models.UserInputImpl;
 import com.workers.presenters.models.UserOutputImpl;
 import com.workers.usecase.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,11 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController(UserService userService) {
+    private PasswordEncoder passwordEncoder;
+
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/user")
@@ -26,7 +30,10 @@ public class UserController {
     @PostMapping(value = "/user")
     public ModelAndView save(UserPostModel userPostModel) {
 
-        UserInputImpl input = new UserInputImpl(userPostModel.getEmail(), userPostModel.getPassword());
+        UserInputImpl input = new UserInputImpl(
+                userPostModel.getEmail(),
+                passwordEncoder.encode(userPostModel.getPassword())
+        );
 
         UserOutputImpl userOutput = (UserOutputImpl) userService.save(input);
 
