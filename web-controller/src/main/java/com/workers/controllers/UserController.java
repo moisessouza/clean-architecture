@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/user")
     public ModelAndView index() {
         return new ModelAndView("user", "user", new UserOutputImpl());
     }
