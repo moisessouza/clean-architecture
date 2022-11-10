@@ -34,7 +34,7 @@ public class UserController {
         String passwordEncoded = null;
 
         if (StringUtils.hasText(userPostModel.getPassword())) {
-            passwordEncoded = passwordEncoder.encode(userPostModel.getPassword())
+            passwordEncoded = passwordEncoder.encode(userPostModel.getPassword());
         }
 
         UserInputImpl input = new UserInputImpl(
