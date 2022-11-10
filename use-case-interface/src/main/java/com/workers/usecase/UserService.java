@@ -5,4 +5,6 @@ import com.workers.presenters.models.UserOutput;
 
 public interface UserService {
     UserOutput save(UserInput userInput);
+
+    UserOutput findByEmail(UserInput userInput);
 }

@@ -6,4 +6,6 @@ public interface UserGateway {
 
     UserEntity save(UserEntity userEntity);
 
+    UserEntity findByEmail(String email);
+
 }

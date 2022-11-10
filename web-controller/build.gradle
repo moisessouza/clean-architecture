@@ -23,6 +23,7 @@ dependencies {
 
     implementation project(":use-case-interface")
     implementation project(":presenters")
+    implementation project(":entities")
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'

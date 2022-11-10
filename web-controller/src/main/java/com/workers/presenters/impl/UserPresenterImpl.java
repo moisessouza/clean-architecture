@@ -1,5 +1,6 @@
 package com.workers.presenters.impl;
 
+import com.workers.entities.UserEntity;
 import com.workers.presenters.UserPresenter;
 import com.workers.presenters.models.UserInput;
 import com.workers.presenters.models.UserOutput;
@@ -29,8 +30,14 @@ public class UserPresenterImpl implements UserPresenter {
     }
 
     @Override
-    public UserOutput createSuccess(UserInput userInput, String messageCode) {
-        UserOutputImpl impl = new UserOutputImpl(false, getMessage(messageCode), "user", userInput.getEmail(), userInput.getPassword());
+    public UserOutput createSuccess(UserEntity userEntity, String messageCode) {
+        UserOutputImpl impl = new UserOutputImpl(false, getMessage(messageCode), "user", userEntity.getEmail(), userEntity.getPassword());
+        return impl;
+    }
+
+    @Override
+    public UserOutput findEmailSuccess(UserEntity userEntity, String messageCode) {
+        UserOutputImpl impl = new UserOutputImpl(false, getMessage(messageCode), "user", userEntity.getEmail(), userEntity.getPassword());;
         return impl;
     }
 
