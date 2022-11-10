@@ -6,7 +6,6 @@ import com.workers.presenters.UserPresenter;
 import com.workers.presenters.models.UserInput;
 import com.workers.presenters.models.UserOutput;
 import com.workers.usecase.UserService;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,9 +15,7 @@ public class UserServiceImpl implements UserService {
     public UserGateway userGateway;
     public UserPresenter userPresenter;
 
-    public MessageSource messageSource;
-
-    public UserServiceImpl(UserGateway userGateway, UserPresenter userPresenter, MessageSource messageSource) {
+    public UserServiceImpl(UserGateway userGateway, UserPresenter userPresenter) {
         this.userGateway = userGateway;
         this.userPresenter = userPresenter;
 
