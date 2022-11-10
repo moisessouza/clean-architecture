@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = userGateway.findByEmail(userInput.getEmail());
 
-        return userPresenter.createSuccess(userEntity,"user.success.find.email");
+        return userPresenter.findEmailSuccess(userEntity,"user.success.find.email");
     }
 
     private UserOutput verifyIfEmailContainsError(UserInput input) {
