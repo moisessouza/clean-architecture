@@ -36,8 +36,14 @@ public class UserPresenterImpl implements UserPresenter {
     }
 
     @Override
-    public UserOutput findEmailSuccess(UserEntity userEntity, String messageCode) {
+    public UserOutput findUserSuccess(UserEntity userEntity, String messageCode) {
         UserOutputImpl impl = new UserOutputImpl(false, getMessage(messageCode), "user", userEntity.getEmail(), userEntity.getPassword());;
+        return impl;
+    }
+
+    @Override
+    public UserOutput findUserFail(String messageCode) {
+        UserOutputImpl impl = new UserOutputImpl(true, getMessage(messageCode), "user", null, null);
         return impl;
     }
 

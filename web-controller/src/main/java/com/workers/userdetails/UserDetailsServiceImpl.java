@@ -24,6 +24,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserInputImpl impl = new UserInputImpl(username, null);
         UserOutputImpl output = (UserOutputImpl ) userService.findByEmail(impl);
 
+        if (output.hasError()) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
         UserDetails user = User.withUsername(output.getEmail()).password(output.getPassword()).authorities("USER").build();
 
         return user;

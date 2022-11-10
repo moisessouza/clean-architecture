@@ -9,6 +9,8 @@ public interface UserPresenter {
     UserOutput createError(UserInput userInput, String messageCode);
     UserOutput createValidateSuccess();
     UserOutput createSuccess(UserEntity entity, String messageCode);
-    UserOutput findEmailSuccess(UserEntity entity, String messageCode);
+    UserOutput findUserSuccess(UserEntity entity, String messageCode);
+
+    UserOutput findUserFail(String messageCode);
 
 }

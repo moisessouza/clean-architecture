@@ -2,6 +2,7 @@ package com.workers.usecase.impl;
 
 import com.workers.entities.UserEntity;
 import com.workers.gateway.UserGateway;
+import com.workers.gateway.exceptions.UserNotFoundException;
 import com.workers.presenters.UserPresenter;
 import com.workers.presenters.models.UserInput;
 import com.workers.presenters.models.UserOutput;
@@ -49,15 +50,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserOutput findByEmail(UserInput userInput) {
 
-        UserOutput output = verifyIfEmailContainsError(userInput);
+        try {
 
-        if (output.hasError()) {
-            return output;
+            UserOutput output = verifyIfEmailContainsError(userInput);
+
+            if (output.hasError()) {
+                return output;
+            }
+
+            UserEntity userEntity = userGateway.findByEmail(userInput.getEmail());
+
+            return userPresenter.findUserSuccess(userEntity,"user.success.find.email");
+
+        } catch (UserNotFoundException e) {
+            return userPresenter.findUserFail("user.error.find.email");
         }
 
-        UserEntity userEntity = userGateway.findByEmail(userInput.getEmail());
-
-        return userPresenter.findEmailSuccess(userEntity,"user.success.find.email");
     }
 
     private UserOutput verifyIfEmailContainsError(UserInput input) {
