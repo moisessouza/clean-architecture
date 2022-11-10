@@ -6,6 +6,7 @@ import com.workers.presenters.models.UserOutputImpl;
 import com.workers.usecase.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,9 +31,15 @@ public class UserController {
     @PostMapping(value = "/user")
     public ModelAndView save(UserPostModel userPostModel) {
 
+        String passwordEncoded = null;
+
+        if (StringUtils.hasText(userPostModel.getPassword())) {
+            passwordEncoded = passwordEncoder.encode(userPostModel.getPassword())
+        }
+
         UserInputImpl input = new UserInputImpl(
                 userPostModel.getEmail(),
-                passwordEncoder.encode(userPostModel.getPassword())
+                passwordEncoded
         );
 
         UserOutputImpl userOutput = (UserOutputImpl) userService.save(input);
