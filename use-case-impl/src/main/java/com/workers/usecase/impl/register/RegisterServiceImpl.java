@@ -58,7 +58,7 @@ public class RegisterServiceImpl implements RegisterService {
             entity.setName(registerInput.getName());
             entity.setBirthdate(registerInput.getBirthdate());
             entity.setDocumentNumber(registerInput.getDocumentNumber());
-            entity.setUserId(userEntity.getId());
+            entity.setUser(userEntity);
 
             entity = registerGateway.save(entity);
 
