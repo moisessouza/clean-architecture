@@ -38,6 +38,7 @@ public class UserController {
         }
 
         UserInputImpl input = new UserInputImpl(
+                userPostModel.getId(),
                 userPostModel.getEmail(),
                 passwordEncoded
         );
