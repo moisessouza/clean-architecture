@@ -9,10 +9,12 @@ import com.workers.presenters.RegisterPresenter;
 import com.workers.presenters.models.register.RegisterInput;
 import com.workers.presenters.models.register.RegisterOutput;
 import com.workers.usecase.RegisterService;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
+@Service
 public class RegisterServiceImpl implements RegisterService {
 
     private RegisterGateway registerGateway;
