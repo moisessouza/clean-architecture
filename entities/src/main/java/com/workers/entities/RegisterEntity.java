@@ -8,8 +8,9 @@ import java.util.Date;
 @Setter
 @Getter
 public class RegisterEntity {
+    private Long id;
     private String name;
     private String documentNumber;
     private Date birthdate;
-    private Long userId;
+    private UserEntity user;
 }

@@ -6,6 +6,11 @@ import com.workers.orm.UserORM;
 public class UserConverter {
 
     public static final UserEntity toEntity(UserORM orm) {
+
+        if (orm == null) {
+            return null;
+        }
+
         UserEntity value = new UserEntity();
         value.setId(orm.getId());
         value.setEmail(orm.getEmail());
@@ -14,6 +19,11 @@ public class UserConverter {
     }
 
     public static final UserORM toORM(UserEntity entity) {
+
+        if (entity == null) {
+            return null;
+        }
+
         UserORM value = new UserORM();
         value.setId(entity.getId());
         value.setEmail(entity.getEmail());
