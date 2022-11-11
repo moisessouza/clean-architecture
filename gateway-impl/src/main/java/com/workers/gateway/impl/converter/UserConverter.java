@@ -7,6 +7,7 @@ public class UserConverter {
 
     public static final UserEntity toEntity(UserORM orm) {
         UserEntity value = new UserEntity();
+        value.setId(orm.getId());
         value.setEmail(orm.getEmail());
         value.setPassword(orm.getPassword());
         return value;
@@ -14,7 +15,7 @@ public class UserConverter {
 
     public static final UserORM toORM(UserEntity entity) {
         UserORM value = new UserORM();
-
+        value.setId(entity.getId());
         value.setEmail(entity.getEmail());
         value.setPassword(entity.getPassword());
         return value;

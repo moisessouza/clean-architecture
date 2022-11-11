@@ -1,4 +1,4 @@
-package com.workers.presenters.models;
+package com.workers.presenters.models.user;
 
 public interface UserOutput {
 

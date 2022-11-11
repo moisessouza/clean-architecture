@@ -1,5 +1,6 @@
 package com.workers.presenters.models;
 
+import com.workers.presenters.models.user.UserOutput;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

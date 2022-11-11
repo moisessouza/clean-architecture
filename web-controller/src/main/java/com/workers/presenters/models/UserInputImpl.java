@@ -1,5 +1,7 @@
 package com.workers.presenters.models;
 
+import com.workers.presenters.models.user.UserInput;
+
 public class UserInputImpl implements UserInput {
 
     private String email;

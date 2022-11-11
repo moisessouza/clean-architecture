@@ -1,11 +1,11 @@
-package com.workers.usecase.impl;
+package com.workers.usecase.impl.user;
 
 import com.workers.entities.UserEntity;
 import com.workers.gateway.UserGateway;
 import com.workers.gateway.exceptions.UserNotFoundException;
 import com.workers.presenters.UserPresenter;
-import com.workers.presenters.models.UserInput;
-import com.workers.presenters.models.UserOutput;
+import com.workers.presenters.models.user.UserInput;
+import com.workers.presenters.models.user.UserOutput;
 import com.workers.usecase.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
         entity.setEmail(userInput.getEmail());
         entity.setPassword(userInput.getPassword());
 
-        userGateway.save(entity);
+        entity = userGateway.save(entity);
 
-        return userPresenter.createSuccess(entity,"user.success.register");
+        return userPresenter.createSuccess(entity,"user.save.success");
 
     }
 
