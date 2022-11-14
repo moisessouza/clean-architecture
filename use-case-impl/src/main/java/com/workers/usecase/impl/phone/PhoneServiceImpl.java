@@ -5,10 +5,12 @@ import com.workers.entities.PhoneEntity;
 import com.workers.gateway.PersonalDataGateway;
 import com.workers.gateway.PhoneGateway;
 import com.workers.gateway.exceptions.PersonalDataNotFoundException;
+import com.workers.gateway.exceptions.PhoneNotFoundException;
 import com.workers.presenters.PhonePresenter;
 import com.workers.presenters.models.phone.PhoneInput;
 import com.workers.presenters.models.phone.PhoneOutput;
 import com.workers.usecase.PhoneService;
+import com.workers.usecase.impl.helper.EmailHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -27,11 +29,25 @@ public class PhoneServiceImpl implements PhoneService {
 
     @Override
     public PhoneOutput findByEmail(String email) {
-        return null;
+
+        if (!checkEmailIsValid(email)) {
+            return presenter.findByEmailError(email, "phone.error.invalid.email");
+        }
+
+        PhoneEntity entity = findPhoneByEmail(email);
+
+        return presenter.findByEmailSuccess(entity);
+
     }
+
+
 
     @Override
     public PhoneOutput save(PhoneInput input) {
+
+        if (!checkEmailIsValid(input.getUserEmail())) {
+            return presenter.createError(input, "register.error.invalid.email");
+        }
 
         if (!checkIsDdiValid(input.getDdi())) {
             return presenter.createError(input, "phone.error.ddi.invalid");
@@ -49,7 +65,7 @@ public class PhoneServiceImpl implements PhoneService {
 
             PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(input.getUserEmail());
 
-            PhoneEntity entity = phoneGateway.findByEmail(input.getUserEmail());
+            PhoneEntity entity = getPhoneEntityByEmail(input.getUserEmail());
 
             if (entity == null) {
                 entity = new PhoneEntity();
@@ -68,6 +84,10 @@ public class PhoneServiceImpl implements PhoneService {
         }
     }
 
+    private boolean checkEmailIsValid(String email) {
+        return EmailHelper.checkEmailIsValid(email);
+    }
+
     private boolean checkIsDdiValid(String input) {
         return StringUtils.hasText(input);
     }
@@ -79,4 +99,23 @@ public class PhoneServiceImpl implements PhoneService {
     private boolean checkIsPhoneNumberValid(String input) {
         return StringUtils.hasText(input);
     }
+
+    private PhoneEntity findPhoneByEmail(String email) {
+        try {
+            PhoneEntity entity = phoneGateway.findByEmail(email);
+            return entity;
+        } catch (PhoneNotFoundException e) {
+            return new PhoneEntity();
+        }
+    }
+
+    private PhoneEntity getPhoneEntityByEmail(String email)  {
+        try {
+            PhoneEntity entity = phoneGateway.findByEmail(email);
+            return entity;
+        } catch (PhoneNotFoundException e){
+            return new PhoneEntity();
+        }
+    }
+
 }

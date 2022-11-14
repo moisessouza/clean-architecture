@@ -1,7 +1,11 @@
 package com.workers.queries;
 
-import com.workers.orm.PersonalDataORM;
+import com.workers.orm.PhoneORM;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface DBPhone  extends JpaRepository<PersonalDataORM, Long> {
+@Repository
+public interface DBPhone extends JpaRepository<PhoneORM, Long> {
+    PhoneORM findByPersonalDataUserEmail(String email);
+
 }

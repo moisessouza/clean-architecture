@@ -40,7 +40,6 @@ public class PersonalDataServiceImpl implements PersonalDataService {
             return presenter.findByEmailError(email, "register.error.invalid.email");
         }
 
-
         PersonalDataEntity entity = getPersonalDataEntityByEmail(email);
         return presenter.findByEmailSuccess(entity);
     }

@@ -26,6 +26,6 @@ public class PhoneORM {
 
     @ManyToOne
     @JoinColumn(name = "personal_data_id")
-    private PersonalDataORM user;
+    private PersonalDataORM personalData;
 
 }
