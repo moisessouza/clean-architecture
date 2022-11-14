@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "PersonalData")
 @Getter
 @Setter
-public class RegisterORM {
+public class PersonalDataORM {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

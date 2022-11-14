@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class RegisterEntity {
+public class PersonalDataEntity {
     private Long id;
     private String name;
     private String documentNumber;

@@ -1,8 +1,8 @@
-package com.workers.presenters.models.register;
+package com.workers.presenters.models.personaldata;
 
 import java.util.Date;
 
-public interface RegisterInput {
+public interface PersonalDataInput {
 
     String getName();
 
