@@ -37,11 +37,11 @@ public class PhoneServiceImpl implements PhoneService {
             return presenter.createError(input, "phone.error.ddi.invalid");
         }
 
-        if (!checkIsDdiValid(input.getDdd())) {
+        if (!checkIsDddValid(input.getDdd())) {
             return presenter.createError(input, "phone.error.ddd.invalid");
         }
 
-        if (!checkIsDdiValid(input.getPhoneNumber())) {
+        if (!checkIsPhoneNumberValid(input.getPhoneNumber())) {
             return presenter.createError(input, "phone.error.phone.number.invalid");
         }
 
