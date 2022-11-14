@@ -7,6 +7,7 @@ import com.workers.presenters.UserPresenter;
 import com.workers.presenters.models.user.UserInput;
 import com.workers.presenters.models.user.UserOutput;
 import com.workers.usecase.UserService;
+import com.workers.usecase.impl.helper.EmailHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -73,6 +74,10 @@ public class UserServiceImpl implements UserService {
 
         if (!StringUtils.hasText(input.getEmail())) {
             return userPresenter.createError(input, "user.error.email.empty");
+        }
+
+        if (!EmailHelper.checkIsValidEmail(input.getEmail())) {
+            return userPresenter.createError(input, "user.error.email.invalid");
         }
 
         return userPresenter.createValidateSuccess();

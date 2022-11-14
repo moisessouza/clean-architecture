@@ -9,6 +9,7 @@ import com.workers.presenters.RegisterPresenter;
 import com.workers.presenters.models.register.RegisterInput;
 import com.workers.presenters.models.register.RegisterOutput;
 import com.workers.usecase.RegisterService;
+import com.workers.usecase.impl.helper.EmailHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -71,7 +72,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     private boolean checkIsValidEmail(String email) {
-        return !StringUtils.hasText(email);
+        return EmailHelper.checkIsValidEmail(email);
     }
 
     private boolean checkIsBirthdateValid(Date birthdate) {
