@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
             return userPresenter.createError(input, "user.error.email.empty");
         }
 
-        if (!EmailHelper.checkIsValidEmail(input.getEmail())) {
+        if (!EmailHelper.checkEmailIsValid(input.getEmail())) {
             return userPresenter.createError(input, "user.error.email.invalid");
         }
 

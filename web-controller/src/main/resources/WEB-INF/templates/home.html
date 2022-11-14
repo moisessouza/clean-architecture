@@ -6,6 +6,11 @@
 </head>
 <body>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<div>
+  <a th:href="@{/personal-data}">Dados Pessoais</a>
+</div>
+
+
 <form th:action="@{/logout}" method="post">
   <input type="submit" value="Sign Out"/>
 </form>

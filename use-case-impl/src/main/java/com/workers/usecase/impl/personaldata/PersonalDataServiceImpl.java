@@ -35,19 +35,19 @@ public class PersonalDataServiceImpl implements PersonalDataService {
     @Override
     public PersonalDataOutput save(PersonalDataInput personalDataInput) {
 
-        if (checkIsValidEmail(personalDataInput.getUserEmail())) {
+        if (!checkEmailIsValid(personalDataInput.getUserEmail())) {
             return presenter.createError(personalDataInput, "register.error.invalid.email");
         }
 
-        if (checkIsValidName(personalDataInput.getName())) {
+        if (!checkNameIsValid(personalDataInput.getName())) {
             return presenter.createError(personalDataInput, "register.error.invalid.name");
         }
 
-        if (checkIsDocumentNumberValid(personalDataInput.getDocumentNumber())) {
+        if (!checkDocumentNumberIsValid(personalDataInput.getDocumentNumber())) {
             return presenter.createError(personalDataInput, "register.error.invalid.document.number");
         }
 
-        if (checkIsBirthdateValid(personalDataInput.getBirthdate())) {
+        if (!checkBirthdateIsValid(personalDataInput.getBirthdate())) {
             return presenter.createError(personalDataInput, "register.error.invalid.birthdate");
         }
 
@@ -71,20 +71,20 @@ public class PersonalDataServiceImpl implements PersonalDataService {
 
     }
 
-    private boolean checkIsValidEmail(String email) {
-        return EmailHelper.checkIsValidEmail(email);
+    private boolean checkEmailIsValid(String email) {
+        return EmailHelper.checkEmailIsValid(email);
     }
 
-    private boolean checkIsBirthdateValid(Date birthdate) {
+    private boolean checkBirthdateIsValid(Date birthdate) {
         return birthdate != null;
     }
 
-    private boolean checkIsDocumentNumberValid(String documentNumber) {
-        return !StringUtils.hasText(documentNumber);
+    private boolean checkDocumentNumberIsValid(String documentNumber) {
+        return StringUtils.hasText(documentNumber);
     }
 
-    private boolean checkIsValidName(String name) {
-        return !StringUtils.hasText(name);
+    private boolean checkNameIsValid(String name) {
+        return StringUtils.hasText(name);
     }
 
 }
