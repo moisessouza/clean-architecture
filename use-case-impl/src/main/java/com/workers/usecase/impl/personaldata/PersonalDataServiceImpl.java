@@ -33,6 +33,17 @@ public class PersonalDataServiceImpl implements PersonalDataService {
     }
 
     @Override
+    public PersonalDataOutput findByEmail(String email) {
+
+        if (!checkEmailIsValid(email)) {
+            return presenter.findByEmailError(email, "register.error.invalid.email");
+        }
+
+        PersonalDataEntity entity = personalDataGateway.findByEmail(email);
+        return presenter.findByEmailSuccess(entity);
+    }
+
+    @Override
     public PersonalDataOutput save(PersonalDataInput personalDataInput) {
 
         if (!checkEmailIsValid(personalDataInput.getUserEmail())) {
@@ -55,7 +66,12 @@ public class PersonalDataServiceImpl implements PersonalDataService {
 
             UserEntity userEntity = userGateway.findByEmail(personalDataInput.getUserEmail());
 
-            PersonalDataEntity entity = new PersonalDataEntity();
+            PersonalDataEntity entity = personalDataGateway.findByEmail(personalDataInput.getUserEmail());
+
+            if (entity == null) {
+                entity = new PersonalDataEntity();
+            }
+
             entity.setName(personalDataInput.getName());
             entity.setBirthdate(personalDataInput.getBirthdate());
             entity.setDocumentNumber(personalDataInput.getDocumentNumber());

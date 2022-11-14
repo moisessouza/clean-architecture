@@ -9,4 +9,8 @@ public interface PersonalDataPresenter {
     PersonalDataOutput createError(PersonalDataInput personalDataInput, String messageCode);
 
     PersonalDataOutput createSuccess(PersonalDataEntity entity, String messageCode);
+
+    PersonalDataOutput findByEmailError(String email, String messageCode);
+
+    PersonalDataOutput findByEmailSuccess(PersonalDataEntity entity);
 }

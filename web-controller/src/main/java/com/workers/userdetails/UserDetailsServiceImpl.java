@@ -1,7 +1,7 @@
 package com.workers.userdetails;
 
-import com.workers.presenters.models.UserInputImpl;
-import com.workers.presenters.models.UserOutputImpl;
+import com.workers.presenters.models.user.UserInputImpl;
+import com.workers.presenters.models.user.UserOutputImpl;
 import com.workers.usecase.UserService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

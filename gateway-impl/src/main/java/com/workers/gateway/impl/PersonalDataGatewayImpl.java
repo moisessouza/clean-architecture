@@ -18,6 +18,13 @@ public class PersonalDataGatewayImpl implements PersonalDataGateway {
         this.dbPersonalData = dbPersonalData;
     }
 
+
+    @Override
+    public PersonalDataEntity findByEmail(String email) {
+        PersonalDataORM orm = dbPersonalData.findByUserEmail(email);
+        return toEntity(orm);
+    }
+
     @Override
     public PersonalDataEntity save(PersonalDataEntity personalDataEntity) {
         PersonalDataORM orm = toORM(personalDataEntity);

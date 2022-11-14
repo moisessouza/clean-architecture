@@ -5,6 +5,24 @@
     <title>Personal data</title>
 </head>
 <body>
-Personal data
+    Personal data
+    <div><label th:text="${personalData.message}"/></div>
+    <form th:action="@{/personal-data}" th:object="${personalData}" method="post">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" th:value="*{name}"/>
+        </div>
+        <div>
+            <label>Document Number</label>
+            <input type="text" name="documentNumber" th:value="*{documentNumber}"/>
+        </div>
+        <div>
+            <label>Birthdate</label>
+            <input type="date" name="birthdate" th:value="*{birthdate}"/>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+
+    <a th:href="@{/}">Home</a>
 </body>
 </html>

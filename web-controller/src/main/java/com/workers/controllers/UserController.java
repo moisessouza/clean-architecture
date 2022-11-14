@@ -1,8 +1,8 @@
 package com.workers.controllers;
 
 import com.workers.models.UserPostModel;
-import com.workers.presenters.models.UserInputImpl;
-import com.workers.presenters.models.UserOutputImpl;
+import com.workers.presenters.models.user.UserInputImpl;
+import com.workers.presenters.models.user.UserOutputImpl;
 import com.workers.usecase.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -29,17 +29,17 @@ public class UserController {
     }
 
     @PostMapping(value = "/user")
-    public ModelAndView save(UserPostModel userPostModel) {
+    public ModelAndView save(UserPostModel model) {
 
         String passwordEncoded = null;
 
-        if (StringUtils.hasText(userPostModel.getPassword())) {
-            passwordEncoded = passwordEncoder.encode(userPostModel.getPassword());
+        if (StringUtils.hasText(model.getPassword())) {
+            passwordEncoded = passwordEncoder.encode(model.getPassword());
         }
 
         UserInputImpl input = new UserInputImpl(
-                userPostModel.getId(),
-                userPostModel.getEmail(),
+                model.getId(),
+                model.getEmail(),
                 passwordEncoded
         );
 

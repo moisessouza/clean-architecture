@@ -1,6 +1,4 @@
-package com.workers.presenters.models;
-
-import com.workers.presenters.models.user.UserInput;
+package com.workers.presenters.models.user;
 
 public class UserInputImpl implements UserInput {
 

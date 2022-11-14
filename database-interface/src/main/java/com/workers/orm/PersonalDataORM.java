@@ -24,6 +24,7 @@ public class PersonalDataORM {
     private String documentNumber;
 
     @Column(name="birthdate", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date birthdate;
 
     @ManyToOne

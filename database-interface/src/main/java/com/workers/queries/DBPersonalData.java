@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DBPersonalData extends JpaRepository<PersonalDataORM, Long> {
+
+    PersonalDataORM findByUserEmail(String email);
+
 }

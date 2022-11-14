@@ -2,9 +2,9 @@ package com.workers.presenters.impl;
 
 import com.workers.entities.UserEntity;
 import com.workers.presenters.UserPresenter;
-import com.workers.presenters.models.UserOutputImpl;
 import com.workers.presenters.models.user.UserInput;
 import com.workers.presenters.models.user.UserOutput;
+import com.workers.presenters.models.user.UserOutputImpl;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
