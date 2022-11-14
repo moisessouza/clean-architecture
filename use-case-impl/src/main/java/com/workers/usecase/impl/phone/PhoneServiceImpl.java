@@ -68,15 +68,15 @@ public class PhoneServiceImpl implements PhoneService {
         }
     }
 
-    private static boolean checkIsDdiValid(String input) {
+    private boolean checkIsDdiValid(String input) {
         return StringUtils.hasText(input);
     }
 
-    private static boolean checkIsDddValid(String input) {
+    private boolean checkIsDddValid(String input) {
         return StringUtils.hasText(input);
     }
 
-    private static boolean checkIsPhoneNumberValid(String input) {
+    private boolean checkIsPhoneNumberValid(String input) {
         return StringUtils.hasText(input);
     }
 }
