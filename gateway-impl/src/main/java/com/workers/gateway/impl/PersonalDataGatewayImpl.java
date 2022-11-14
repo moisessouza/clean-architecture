@@ -2,6 +2,7 @@ package com.workers.gateway.impl;
 
 import com.workers.entities.PersonalDataEntity;
 import com.workers.gateway.PersonalDataGateway;
+import com.workers.gateway.exceptions.PersonalDataNotFoundException;
 import com.workers.orm.PersonalDataORM;
 import com.workers.queries.DBPersonalData;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,13 @@ public class PersonalDataGatewayImpl implements PersonalDataGateway {
 
 
     @Override
-    public PersonalDataEntity findByEmail(String email) {
+    public PersonalDataEntity findByEmail(String email) throws PersonalDataNotFoundException {
         PersonalDataORM orm = dbPersonalData.findByUserEmail(email);
+
+        if (orm == null) {
+            throw new PersonalDataNotFoundException();
+        }
+
         return toEntity(orm);
     }
 

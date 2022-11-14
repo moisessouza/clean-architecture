@@ -7,9 +7,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "PersonalData")
-@Getter
-@Setter
+@Table(name = "personal_data")
+@Getter @Setter
 public class PersonalDataORM {
 
     @Id

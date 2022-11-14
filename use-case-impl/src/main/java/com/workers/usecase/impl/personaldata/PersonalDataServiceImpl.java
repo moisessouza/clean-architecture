@@ -4,6 +4,7 @@ import com.workers.entities.PersonalDataEntity;
 import com.workers.entities.UserEntity;
 import com.workers.gateway.PersonalDataGateway;
 import com.workers.gateway.UserGateway;
+import com.workers.gateway.exceptions.PersonalDataNotFoundException;
 import com.workers.gateway.exceptions.UserNotFoundException;
 import com.workers.presenters.PersonalDataPresenter;
 import com.workers.presenters.models.personaldata.PersonalDataInput;
@@ -39,7 +40,8 @@ public class PersonalDataServiceImpl implements PersonalDataService {
             return presenter.findByEmailError(email, "register.error.invalid.email");
         }
 
-        PersonalDataEntity entity = personalDataGateway.findByEmail(email);
+
+        PersonalDataEntity entity = getPersonalDataEntityByEmail(email);
         return presenter.findByEmailSuccess(entity);
     }
 
@@ -66,11 +68,7 @@ public class PersonalDataServiceImpl implements PersonalDataService {
 
             UserEntity userEntity = userGateway.findByEmail(personalDataInput.getUserEmail());
 
-            PersonalDataEntity entity = personalDataGateway.findByEmail(personalDataInput.getUserEmail());
-
-            if (entity == null) {
-                entity = new PersonalDataEntity();
-            }
+            PersonalDataEntity entity = getPersonalDataEntityByEmail(personalDataInput.getUserEmail());
 
             entity.setName(personalDataInput.getName());
             entity.setBirthdate(personalDataInput.getBirthdate());
@@ -85,6 +83,15 @@ public class PersonalDataServiceImpl implements PersonalDataService {
             return presenter.createError(personalDataInput, "register.error.user.not.found");
         }
 
+    }
+
+    private PersonalDataEntity getPersonalDataEntityByEmail(String email) {
+        try {
+            PersonalDataEntity entity = personalDataGateway.findByEmail(email);
+            return entity;
+        } catch (PersonalDataNotFoundException e) {
+            return new PersonalDataEntity();
+        }
     }
 
     private boolean checkEmailIsValid(String email) {
