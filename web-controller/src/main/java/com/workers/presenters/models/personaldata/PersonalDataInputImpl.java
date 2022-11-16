@@ -31,4 +31,5 @@ public class PersonalDataInputImpl implements PersonalDataInput {
     public String getUserEmail() {
         return userEmail;
     }
+
 }

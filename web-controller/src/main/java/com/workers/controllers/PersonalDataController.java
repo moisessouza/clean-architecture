@@ -1,10 +1,8 @@
 package com.workers.controllers;
 
-import com.workers.helper.DateHelper;
-import com.workers.models.PersonalDataModel;
-import com.workers.presenters.models.personaldata.PersonalDataInputImpl;
-import com.workers.presenters.models.personaldata.PersonalDataOutputImpl;
-import com.workers.usecase.PersonalDataService;
+import com.workers.facade.PersonalDataFacade;
+import com.workers.models.request.PersonalDataRequest;
+import com.workers.models.response.PersonalDataResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,35 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PersonalDataController {
 
-    private PersonalDataService personalDataService;
+    PersonalDataFacade personalDataFacade;
 
-    public PersonalDataController(PersonalDataService personalDataService) {
-        this.personalDataService = personalDataService;
+    public PersonalDataController(PersonalDataFacade personalDataFacade) {
+        this.personalDataFacade = personalDataFacade;
     }
 
     @GetMapping("/personal-data")
     public ModelAndView index () {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PersonalDataOutputImpl output = (PersonalDataOutputImpl) personalDataService.findByEmail(authentication.getName());
+        PersonalDataResponse output = (PersonalDataResponse) personalDataFacade.findByEmail(authentication.getName());
         return new ModelAndView(output.getForward(), "personalData", output);
     }
 
     @PostMapping(value = "/personal-data")
-    public ModelAndView save(PersonalDataModel model) throws Exception {
-
+    public ModelAndView save(PersonalDataRequest model) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        PersonalDataInputImpl input = new PersonalDataInputImpl();
-
-        input.setName(model.getName());
-        input.setDocumentNumber(model.getDocumentNumber());
-        input.setBirthdate(DateHelper.convertStringToDate(model.getBirthdate()));
-        input.setUserEmail(authentication.getName());
-
-        PersonalDataOutputImpl output = (PersonalDataOutputImpl) personalDataService.save(input);
-
+        PersonalDataResponse output = (PersonalDataResponse) personalDataFacade.save(authentication, model);
         return new ModelAndView(output.getForward(), "personalData", output);
-
     }
 
 

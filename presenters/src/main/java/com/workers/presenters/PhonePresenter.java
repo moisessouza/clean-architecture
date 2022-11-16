@@ -7,6 +7,6 @@ import com.workers.presenters.models.phone.PhoneOutput;
 public interface PhonePresenter {
     PhoneOutput createError(PhoneInput userInput, String messageCode);
     PhoneOutput createSuccess(PhoneEntity entity, String messageCode);
-    PhoneOutput findByEmailError(String email, String s);
+    PhoneOutput findByEmailError(String email, String messageCode);
     PhoneOutput findByEmailSuccess(PhoneEntity entity);
 }

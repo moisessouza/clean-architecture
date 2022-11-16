@@ -2,11 +2,12 @@ package com.workers.presenters.models.phone;
 
 public interface PhoneInput {
 
-    public String getDdi();
+    Long getId();
+    String getDdi();
 
-    public String getDdd();
+    String getDdd();
 
-    public String getPhoneNumber();
+    String getPhoneNumber();
 
     String getUserEmail();
 
