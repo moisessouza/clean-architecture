@@ -112,16 +112,7 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         response.setDdd(phoneOutput.getDdd());
         response.setDdi(phoneOutput.getDdi());
         response.setForward("personal-data");
-
-        if (personalDataOutput.isError()){
-            response.setHasError(true);
-            response.setMessage(personalDataOutput.getMessage());
-        }
-
-        if (phoneOutput.isError()){
-            response.setHasError(true);
-            response.setMessage(personalDataOutput.getMessage());
-        }
+        response.setMessage(personalDataOutput.getMessage());
 
         return response;
 

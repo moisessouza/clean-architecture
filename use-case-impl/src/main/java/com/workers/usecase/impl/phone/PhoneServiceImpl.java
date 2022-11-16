@@ -46,7 +46,7 @@ public class PhoneServiceImpl implements PhoneService {
     public PhoneOutput saveByUserEmail(PhoneInput input) {
 
         if (!checkEmailIsValid(input.getUserEmail())) {
-            return presenter.createError(input, "register.error.invalid.email");
+            return presenter.createError(input, "phone.error.invalid.email");
         }
 
         if (!checkIsDdiValid(input.getDdi())) {
