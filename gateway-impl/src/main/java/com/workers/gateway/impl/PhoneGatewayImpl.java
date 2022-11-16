@@ -5,10 +5,12 @@ import com.workers.gateway.PhoneGateway;
 import com.workers.gateway.exceptions.PhoneNotFoundException;
 import com.workers.orm.PhoneORM;
 import com.workers.queries.DBPhone;
+import org.springframework.stereotype.Service;
 
 import static com.workers.gateway.impl.converter.PhoneConverter.toEntity;
 import static com.workers.gateway.impl.converter.PhoneConverter.toORM;
 
+@Service
 public class PhoneGatewayImpl implements PhoneGateway {
 
     private DBPhone dbPhone;

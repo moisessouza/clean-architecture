@@ -2,16 +2,16 @@ package com.workers.presenters.models.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserOutputImpl implements UserOutput {
 
-    public UserOutputImpl() {}
-
-    public boolean hasError;
+    public boolean error;
     public String message;
     public String forward;
 
@@ -19,8 +19,8 @@ public class UserOutputImpl implements UserOutput {
     public String password;
 
     @Override
-    public boolean hasError() {
-        return hasError;
+    public boolean isError() {
+        return error;
     }
 
 }

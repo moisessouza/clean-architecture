@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class PersonalDataOutputImpl implements PersonalDataOutput {
 
-    public boolean hasError;
+    public boolean error;
     public String message;
 
     private String name;

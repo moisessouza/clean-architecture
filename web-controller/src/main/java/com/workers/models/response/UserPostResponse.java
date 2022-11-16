@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserPostResponse {
 
-    public boolean hasError;
+    public boolean error;
     public String message;
     public String forward;
 

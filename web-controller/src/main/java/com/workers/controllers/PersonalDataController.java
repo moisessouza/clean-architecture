@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PersonalDataController {
 
-    PersonalDataFacade personalDataFacade;
+    private PersonalDataFacade personalDataFacade;
 
     public PersonalDataController(PersonalDataFacade personalDataFacade) {
         this.personalDataFacade = personalDataFacade;

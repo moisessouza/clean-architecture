@@ -67,8 +67,18 @@ public class PhonePresenterImpl implements PhonePresenter {
                 entity.getDdi(),
                 entity.getDdd(),
                 entity.getPhoneNumber(),
-                entity.getPersonalData().getUser().getEmail());
+                getEmail(entity));
         return impl;
+    }
+
+    private static String getEmail(PhoneEntity entity) {
+
+        if (entity.getPersonalData() == null || entity.getPersonalData().getUser() == null) {
+            return null;
+        }
+
+        return entity.getPersonalData().getUser().getEmail();
+
     }
 
     private String getMessage(String messageCode) {

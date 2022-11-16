@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PhoneOutputImpl implements PhoneOutput {
 
-    private boolean hasError;
+    private boolean error;
     private String message;
 
     private Long id;

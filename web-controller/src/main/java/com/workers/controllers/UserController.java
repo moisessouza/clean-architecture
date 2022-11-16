@@ -47,7 +47,7 @@ public class UserController {
         UserOutputImpl userOutput = (UserOutputImpl) userService.save(input);
 
         UserPostResponse response = new UserPostResponse(
-                userOutput.hasError(),
+                userOutput.isError(),
                 userOutput.getMessage(),
                 userOutput.getForward(),
                 userOutput.getEmail(),

@@ -5,6 +5,10 @@ import lombok.Setter;
 
 @Getter @Setter
 public class PersonalDataResponse {
+
+    private boolean hasError;
+    private String message;
+
     private String name;
     private String documentNumber;
     private String birthdate;

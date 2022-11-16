@@ -43,7 +43,16 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         PhoneInputImpl phoneInput = createPhoneInput(authentication, model);
 
         PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.save(personalDataInput);
+
+        if (personalDataOutput.isError()) {
+            createError(model, personalDataOutput.getMessage());
+        }
+
         PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.save(phoneInput);
+
+        if (personalDataOutput.isError()) {
+            createError(model, personalDataOutput.getMessage());
+        }
 
         PersonalDataResponse response = createPersonalDataResponse(personalDataOutput, phoneOutput);
 
@@ -75,6 +84,23 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         return phoneInput;
 
     }
+
+    private PersonalDataResponse createError(PersonalDataRequest request, String message) {
+
+        PersonalDataResponse response = new PersonalDataResponse();
+
+        response.setName(request.getName());
+        response.setDocumentNumber(request.getDocumentNumber());
+        response.setBirthdate(request.getBirthdate());
+        response.setPhoneNumber(request.getPhoneNumber());
+        response.setDdd(request.getDdd());
+        response.setDdi(request.getDdi());
+        response.setForward("personal-data");
+        response.setMessage(message);
+
+        return response;
+
+    }
     private PersonalDataResponse createPersonalDataResponse(PersonalDataOutputImpl personalDataOutput, PhoneOutputImpl phoneOutput) {
 
         PersonalDataResponse response = new PersonalDataResponse();
@@ -86,6 +112,16 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         response.setDdd(phoneOutput.getDdd());
         response.setDdi(phoneOutput.getDdi());
         response.setForward("personal-data");
+
+        if (personalDataOutput.isError()){
+            response.setHasError(true);
+            response.setMessage(personalDataOutput.getMessage());
+        }
+
+        if (phoneOutput.isError()){
+            response.setHasError(true);
+            response.setMessage(personalDataOutput.getMessage());
+        }
 
         return response;
 

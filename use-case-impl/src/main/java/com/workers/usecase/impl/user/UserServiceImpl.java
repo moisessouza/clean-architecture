@@ -28,13 +28,13 @@ public class UserServiceImpl implements UserService {
 
         UserOutput output = verifyIfEmailContainsError(userInput);
 
-        if (output.hasError()) {
+        if (output.isError()) {
             return output;
         }
 
         output = verifyIfPasswordContainsError(userInput);
 
-        if (output.hasError()) {
+        if (output.isError()) {
             return output;
         }
 
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
             UserOutput output = verifyIfEmailContainsError(userInput);
 
-            if (output.hasError()) {
+            if (output.isError()) {
                 return output;
             }
 

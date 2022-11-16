@@ -28,7 +28,7 @@ public class PersonalDataPresenterImpl implements PersonalDataPresenter {
         impl.setDocumentNumber(personalDataInput.getDocumentNumber());
         impl.setBirthdate(DateHelper.convertDateToString(personalDataInput.getBirthdate()));
         impl.setForward("personal-data");
-        impl.setHasError(true);
+        impl.setError(true);
         impl.setMessage(getMessage(messageCode));
 
         return impl;
@@ -43,7 +43,7 @@ public class PersonalDataPresenterImpl implements PersonalDataPresenter {
         impl.setDocumentNumber(entity.getDocumentNumber());
         impl.setBirthdate(DateHelper.convertDateToString(entity.getBirthdate()));
         impl.setForward("personal-data");
-        impl.setHasError(true);
+        impl.setError(true);
         impl.setMessage(getMessage(messageCode));
 
         return impl;
@@ -57,7 +57,7 @@ public class PersonalDataPresenterImpl implements PersonalDataPresenter {
         PersonalDataOutputImpl impl = new PersonalDataOutputImpl();
 
         impl.setForward("personal-data");
-        impl.setHasError(true);
+        impl.setError(true);
         impl.setMessage(getMessage(messageCode));
 
         return impl;
@@ -69,7 +69,7 @@ public class PersonalDataPresenterImpl implements PersonalDataPresenter {
 
         PersonalDataOutputImpl impl = new PersonalDataOutputImpl();
         impl.setForward("personal-data");
-        impl.setHasError(false);
+        impl.setError(false);
 
         if (entity == null) {
             return impl;
