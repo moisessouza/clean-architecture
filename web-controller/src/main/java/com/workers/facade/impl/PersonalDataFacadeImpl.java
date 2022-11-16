@@ -26,7 +26,7 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
     }
 
     @Override
-    public Object findByEmail(String email) {
+    public PersonalDataResponse findByEmail(String email) {
 
         PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.findByEmail(email);
         PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.findByEmail(email);

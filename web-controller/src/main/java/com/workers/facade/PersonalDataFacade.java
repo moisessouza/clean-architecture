@@ -6,6 +6,6 @@ import org.springframework.security.core.Authentication;
 
 public interface PersonalDataFacade {
     public PersonalDataResponse save(Authentication authentication, PersonalDataRequest model) throws Exception;
-    Object findByEmail(String email);
+    PersonalDataResponse findByEmail(String email);
 
 }
