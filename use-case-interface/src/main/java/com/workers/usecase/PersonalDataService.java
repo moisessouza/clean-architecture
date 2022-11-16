@@ -5,5 +5,5 @@ import com.workers.presenters.models.personaldata.PersonalDataOutput;
 
 public interface PersonalDataService {
     PersonalDataOutput findByEmail(String email);
-    PersonalDataOutput save(PersonalDataInput personalDataInput);
+    PersonalDataOutput saveByUserEmail(PersonalDataInput personalDataInput);
 }

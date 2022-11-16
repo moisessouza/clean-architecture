@@ -43,7 +43,7 @@ public class PhoneServiceImpl implements PhoneService {
 
 
     @Override
-    public PhoneOutput save(PhoneInput input) {
+    public PhoneOutput saveByUserEmail(PhoneInput input) {
 
         if (!checkEmailIsValid(input.getUserEmail())) {
             return presenter.createError(input, "register.error.invalid.email");

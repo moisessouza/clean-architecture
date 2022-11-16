@@ -42,16 +42,16 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         PersonalDataInputImpl personalDataInput = createPersonalDataInput(authentication, model);
         PhoneInputImpl phoneInput = createPhoneInput(authentication, model);
 
-        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.save(personalDataInput);
+        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.saveByUserEmail(personalDataInput);
 
         if (personalDataOutput.isError()) {
-            createError(model, personalDataOutput.getMessage());
+            return createError(model, personalDataOutput.getMessage());
         }
 
-        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.save(phoneInput);
+        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.saveByUserEmail(phoneInput);
 
-        if (personalDataOutput.isError()) {
-            createError(model, personalDataOutput.getMessage());
+        if (phoneOutput.isError()) {
+            return createError(model, phoneOutput.getMessage());
         }
 
         PersonalDataResponse response = createPersonalDataResponse(personalDataOutput, phoneOutput);

@@ -43,7 +43,7 @@ public class PersonalDataPresenterImpl implements PersonalDataPresenter {
         impl.setDocumentNumber(entity.getDocumentNumber());
         impl.setBirthdate(DateHelper.convertDateToString(entity.getBirthdate()));
         impl.setForward("personal-data");
-        impl.setError(true);
+        impl.setError(false);
         impl.setMessage(getMessage(messageCode));
 
         return impl;

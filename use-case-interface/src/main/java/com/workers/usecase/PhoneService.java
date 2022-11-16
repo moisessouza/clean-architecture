@@ -5,5 +5,5 @@ import com.workers.presenters.models.phone.PhoneOutput;
 
 public interface PhoneService {
     PhoneOutput findByEmail(String email);
-    PhoneOutput save(PhoneInput personalDataInput);
+    PhoneOutput saveByUserEmail(PhoneInput personalDataInput);
 }

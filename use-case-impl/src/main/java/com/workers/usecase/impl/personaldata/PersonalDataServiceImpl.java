@@ -45,7 +45,7 @@ public class PersonalDataServiceImpl implements PersonalDataService {
     }
 
     @Override
-    public PersonalDataOutput save(PersonalDataInput personalDataInput) {
+    public PersonalDataOutput saveByUserEmail(PersonalDataInput personalDataInput) {
 
         if (!checkEmailIsValid(personalDataInput.getUserEmail())) {
             return presenter.createError(personalDataInput, "register.error.invalid.email");
