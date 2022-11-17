@@ -30,6 +30,20 @@ public class AddressUseCaseImpl implements AddressUseCase {
         this.presenter = presenter;
     }
 
+    @Override
+    public AddressOutput findByEmail(String email) {
+
+        if (!checkEmailIsValid(email)) {
+            return presenter.findByEmailError(email, "phone.error.invalid.email");
+        }
+
+        AddressEntity entity = findAddressByEmail(email);
+
+        return presenter.findByEmailSuccess(entity);
+
+    }
+
+    @Override
     public AddressOutput saveByEmail(AddressInput input) {
 
         Optional<AddressOutput> optional = validateInput(input);
@@ -59,6 +73,15 @@ public class AddressUseCaseImpl implements AddressUseCase {
             return presenter.createError(input, "address.error.personal.data.not.found");
         }
 
+    }
+
+    private AddressEntity findAddressByEmail(String email) {
+        try {
+            AddressEntity entity = addressGateway.findByEmail(email);
+            return entity;
+        } catch (AddressNotFoundException e) {
+            return new AddressEntity();
+        }
     }
 
     private AddressEntity getOrCreateAddressByEmail(String email) throws PersonalDataNotFoundException {

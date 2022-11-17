@@ -9,4 +9,8 @@ public interface AddressPresenter {
     AddressOutput createError(AddressInput addressInput, String messageCode);
 
     AddressOutput createSuccess(AddressEntity entity, String messageCode);
+
+    AddressOutput findByEmailError(String email, String s);
+
+    AddressOutput findByEmailSuccess(AddressEntity entity);
 }

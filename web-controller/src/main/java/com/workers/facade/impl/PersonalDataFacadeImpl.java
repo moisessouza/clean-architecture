@@ -4,10 +4,12 @@ import com.workers.facade.PersonalDataFacade;
 import com.workers.helper.DateHelper;
 import com.workers.models.request.PersonalDataRequest;
 import com.workers.models.response.PersonalDataResponse;
+import com.workers.presenters.models.address.AddressOutputImpl;
 import com.workers.presenters.models.personaldata.PersonalDataInputImpl;
 import com.workers.presenters.models.personaldata.PersonalDataOutputImpl;
 import com.workers.presenters.models.phone.PhoneInputImpl;
 import com.workers.presenters.models.phone.PhoneOutputImpl;
+import com.workers.usecase.AddressUseCase;
 import com.workers.usecase.PersonalDataUseCase;
 import com.workers.usecase.PhoneUseCase;
 import org.springframework.security.core.Authentication;
@@ -20,9 +22,12 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
 
     private PhoneUseCase phoneUseCase;
 
-    public PersonalDataFacadeImpl (PersonalDataUseCase personalDataUseCase, PhoneUseCase phoneUseCase) {
+    private AddressUseCase addressUseCase;
+
+    public PersonalDataFacadeImpl (PersonalDataUseCase personalDataUseCase, PhoneUseCase phoneUseCase, AddressUseCase addressUseCase) {
         this.personalDataUseCase = personalDataUseCase;
         this.phoneUseCase = phoneUseCase;
+        this.addressUseCase = addressUseCase;
     }
 
     @Override
@@ -30,6 +35,7 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
 
         PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataUseCase.findByEmail(email);
         PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneUseCase.findByEmail(email);
+        AddressOutputImpl addressOutput = (AddressOutputImpl) addressUseCase.findByEmail(email);
 
         PersonalDataResponse response = createPersonalDataResponse(personalDataOutput, phoneOutput);
         return response;
