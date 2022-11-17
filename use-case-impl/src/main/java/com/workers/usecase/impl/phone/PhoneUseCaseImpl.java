@@ -63,20 +63,11 @@ public class PhoneUseCaseImpl implements PhoneUseCase {
 
         try {
 
-            PhoneEntity entity = getPhoneEntityByEmail(input.getUserEmail());
-
-            if (entity == null) {
-                entity = new PhoneEntity();
-
-                PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(input.getUserEmail());
-                entity.setPersonalData(personalDataEntity);
-
-            }
+            PhoneEntity entity = getOrCreatePhoneEntityByEmail(input.getUserEmail());
 
             entity.setDdd(input.getDdd());
             entity.setDdi(input.getDdi());
             entity.setPhoneNumber(input.getPhoneNumber());
-
             entity = phoneGateway.save(entity);
 
             return presenter.createSuccess(entity, "phone.save.success");
@@ -110,12 +101,17 @@ public class PhoneUseCaseImpl implements PhoneUseCase {
         }
     }
 
-    private PhoneEntity getPhoneEntityByEmail(String email)  {
+    private PhoneEntity getOrCreatePhoneEntityByEmail(String email) throws PersonalDataNotFoundException {
         try {
             PhoneEntity entity = phoneGateway.findByEmail(email);
             return entity;
         } catch (PhoneNotFoundException e){
-            return new PhoneEntity();
+            PhoneEntity entity = new PhoneEntity();
+
+            PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(email);
+            entity.setPersonalData(personalDataEntity);
+
+            return entity;
         }
     }
 

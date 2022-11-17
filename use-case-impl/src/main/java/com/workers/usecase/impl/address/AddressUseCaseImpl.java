@@ -4,6 +4,7 @@ import com.workers.entities.AddressEntity;
 import com.workers.entities.PersonalDataEntity;
 import com.workers.gateway.AddressGateway;
 import com.workers.gateway.PersonalDataGateway;
+import com.workers.gateway.exceptions.AddressNotFoundException;
 import com.workers.gateway.exceptions.PersonalDataNotFoundException;
 import com.workers.presenters.AddressPresenter;
 import com.workers.presenters.models.address.AddressInput;
@@ -39,15 +40,7 @@ public class AddressUseCaseImpl implements AddressUseCase {
 
         try {
 
-            AddressEntity entity = addressGateway.findByEmail(input.getUserEmail());
-
-            if (entity == null) {
-                entity = new AddressEntity();
-
-                PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(input.getUserEmail());
-                entity.setPersonalData(personalDataEntity);
-
-            }
+            AddressEntity entity = getOrCreateAddressByEmail(input.getUserEmail());
 
             entity.setCountry(input.getCountry());
             entity.setZipPostal(input.getZipPostal());
@@ -64,6 +57,21 @@ public class AddressUseCaseImpl implements AddressUseCase {
 
         } catch (PersonalDataNotFoundException e) {
             return presenter.createError(input, "address.error.personal.data.not.found");
+        }
+
+    }
+
+    private AddressEntity getOrCreateAddressByEmail(String email) throws PersonalDataNotFoundException {
+        try {
+            AddressEntity entity = addressGateway.findByEmail(email);
+            return entity;
+        } catch (AddressNotFoundException e) {
+            AddressEntity entity = new AddressEntity();
+
+            PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(email);
+            entity.setPersonalData(personalDataEntity);
+
+            return entity;
         }
 
     }
