@@ -19,7 +19,6 @@ public class AddressGatewayImpl implements AddressGateway {
 
     @Override
     public AddressEntity save(AddressEntity addressEntity) {
-
         AddressORM orm = toORM(addressEntity);
         orm = dbAddress.save(orm);
         return toEntity(orm);
