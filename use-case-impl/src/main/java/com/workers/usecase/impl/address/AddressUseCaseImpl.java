@@ -4,6 +4,7 @@ import com.workers.entities.AddressEntity;
 import com.workers.entities.PersonalDataEntity;
 import com.workers.gateway.AddressGateway;
 import com.workers.gateway.PersonalDataGateway;
+import com.workers.gateway.exceptions.PersonalDataNotFoundException;
 import com.workers.presenters.AddressPresenter;
 import com.workers.presenters.models.address.AddressInput;
 import com.workers.presenters.models.address.AddressOutput;
@@ -61,7 +62,7 @@ public class AddressUseCaseImpl implements AddressUseCase {
 
             return presenter.createSuccess(entity, "address.save.success");
 
-        } catch (com.workers.gateway.exceptions.PersonalDataNotFoundException e) {
+        } catch (PersonalDataNotFoundException e) {
             return presenter.createError(input, "address.error.personal.data.not.found");
         }
 
