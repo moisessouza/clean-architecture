@@ -8,28 +8,28 @@ import com.workers.presenters.models.personaldata.PersonalDataInputImpl;
 import com.workers.presenters.models.personaldata.PersonalDataOutputImpl;
 import com.workers.presenters.models.phone.PhoneInputImpl;
 import com.workers.presenters.models.phone.PhoneOutputImpl;
-import com.workers.usecase.PersonalDataService;
-import com.workers.usecase.PhoneService;
+import com.workers.usecase.PersonalDataUseCase;
+import com.workers.usecase.PhoneUseCase;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonalDataFacadeImpl implements PersonalDataFacade {
 
-    private PersonalDataService personalDataService;
+    private PersonalDataUseCase personalDataUseCase;
 
-    private PhoneService phoneService;
+    private PhoneUseCase phoneUseCase;
 
-    public PersonalDataFacadeImpl (PersonalDataService personalDataService, PhoneService phoneService) {
-        this.personalDataService = personalDataService;
-        this.phoneService = phoneService;
+    public PersonalDataFacadeImpl (PersonalDataUseCase personalDataUseCase, PhoneUseCase phoneUseCase) {
+        this.personalDataUseCase = personalDataUseCase;
+        this.phoneUseCase = phoneUseCase;
     }
 
     @Override
     public PersonalDataResponse findByEmail(String email) {
 
-        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.findByEmail(email);
-        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.findByEmail(email);
+        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataUseCase.findByEmail(email);
+        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneUseCase.findByEmail(email);
 
         PersonalDataResponse response = createPersonalDataResponse(personalDataOutput, phoneOutput);
         return response;
@@ -42,13 +42,13 @@ public class PersonalDataFacadeImpl implements PersonalDataFacade {
         PersonalDataInputImpl personalDataInput = createPersonalDataInput(authentication, model);
         PhoneInputImpl phoneInput = createPhoneInput(authentication, model);
 
-        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataService.saveByUserEmail(personalDataInput);
+        PersonalDataOutputImpl personalDataOutput = (PersonalDataOutputImpl) personalDataUseCase.saveByUserEmail(personalDataInput);
 
         if (personalDataOutput.isError()) {
             return createError(model, personalDataOutput.getMessage());
         }
 
-        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneService.saveByUserEmail(phoneInput);
+        PhoneOutputImpl phoneOutput = (PhoneOutputImpl) phoneUseCase.saveByUserEmail(phoneInput);
 
         if (phoneOutput.isError()) {
             return createError(model, phoneOutput.getMessage());

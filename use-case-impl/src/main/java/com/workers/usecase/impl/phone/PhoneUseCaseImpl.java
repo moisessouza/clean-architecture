@@ -9,19 +9,19 @@ import com.workers.gateway.exceptions.PhoneNotFoundException;
 import com.workers.presenters.PhonePresenter;
 import com.workers.presenters.models.phone.PhoneInput;
 import com.workers.presenters.models.phone.PhoneOutput;
-import com.workers.usecase.PhoneService;
+import com.workers.usecase.PhoneUseCase;
 import com.workers.usecase.impl.helper.EmailHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class PhoneServiceImpl implements PhoneService {
+public class PhoneUseCaseImpl implements PhoneUseCase {
 
     private PersonalDataGateway personalDataGateway;
     private PhoneGateway phoneGateway;
     private PhonePresenter presenter;
 
-    public PhoneServiceImpl(PersonalDataGateway personalDataGateway, PhoneGateway phoneGateway, PhonePresenter presenter) {
+    public PhoneUseCaseImpl(PersonalDataGateway personalDataGateway, PhoneGateway phoneGateway, PhonePresenter presenter) {
         this.personalDataGateway = personalDataGateway;
         this.phoneGateway = phoneGateway;
         this.presenter = presenter;

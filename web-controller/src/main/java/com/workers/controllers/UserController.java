@@ -4,7 +4,7 @@ import com.workers.models.request.UserPostRequest;
 import com.workers.models.response.UserPostResponse;
 import com.workers.presenters.models.user.UserInputImpl;
 import com.workers.presenters.models.user.UserOutputImpl;
-import com.workers.usecase.UserService;
+import com.workers.usecase.UserUseCase;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -15,12 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private UserUseCase userUseCase;
 
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
+    public UserController(UserUseCase userUseCase, PasswordEncoder passwordEncoder) {
+        this.userUseCase = userUseCase;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -44,7 +44,7 @@ public class UserController {
                 passwordEncoded
         );
 
-        UserOutputImpl userOutput = (UserOutputImpl) userService.save(input);
+        UserOutputImpl userOutput = (UserOutputImpl) userUseCase.save(input);
 
         UserPostResponse response = new UserPostResponse(
                 userOutput.isError(),

@@ -2,7 +2,7 @@ package com.workers.userdetails;
 
 import com.workers.presenters.models.user.UserInputImpl;
 import com.workers.presenters.models.user.UserOutputImpl;
-import com.workers.usecase.UserService;
+import com.workers.usecase.UserUseCase;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,17 +12,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    public UserService userService;
+    public UserUseCase userUseCase;
 
-    public UserDetailsServiceImpl(UserService userService){
-        this.userService = userService;
+    public UserDetailsServiceImpl(UserUseCase userUseCase){
+        this.userUseCase = userUseCase;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         UserInputImpl impl = new UserInputImpl (null, username, null);
-        UserOutputImpl output = (UserOutputImpl) userService.findByEmail(impl);
+        UserOutputImpl output = (UserOutputImpl) userUseCase.findByEmail(impl);
 
         if (output.isError()) {
             throw new UsernameNotFoundException(output.getMessage());

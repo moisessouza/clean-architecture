@@ -9,7 +9,7 @@ import com.workers.gateway.exceptions.UserNotFoundException;
 import com.workers.presenters.PersonalDataPresenter;
 import com.workers.presenters.models.personaldata.PersonalDataInput;
 import com.workers.presenters.models.personaldata.PersonalDataOutput;
-import com.workers.usecase.PersonalDataService;
+import com.workers.usecase.PersonalDataUseCase;
 import com.workers.usecase.impl.helper.EmailHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
 import java.util.Date;
 
 @Service
-public class PersonalDataServiceImpl implements PersonalDataService {
+public class PersonalDataUseCaseImpl implements PersonalDataUseCase {
 
     private PersonalDataGateway personalDataGateway;
 
@@ -25,7 +25,7 @@ public class PersonalDataServiceImpl implements PersonalDataService {
 
     private PersonalDataPresenter presenter;
 
-    public PersonalDataServiceImpl(PersonalDataGateway personalDataGateway,
+    public PersonalDataUseCaseImpl(PersonalDataGateway personalDataGateway,
                                    UserGateway userGateway,
                                    PersonalDataPresenter presenter) {
         this.personalDataGateway = personalDataGateway;
