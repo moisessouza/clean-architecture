@@ -35,15 +35,15 @@ public class AddressConverter {
         }
 
         AddressORM orm = new AddressORM();
-        orm.setId(orm.getId());
-        orm.setCountry(orm.getCountry());
-        orm.setZipPostal(orm.getZipPostal());
-        orm.setState(orm.getState());
-        orm.setCity(orm.getCity());
-        orm.setNeighborhood(orm.getNeighborhood());
-        orm.setStreet(orm.getStreet());
-        orm.setNumber(orm.getNumber());
-        orm.setComplement(orm.getComplement());
+        orm.setId(entity.getId());
+        orm.setCountry(entity.getCountry());
+        orm.setZipPostal(entity.getZipPostal());
+        orm.setState(entity.getState());
+        orm.setCity(entity.getCity());
+        orm.setNeighborhood(entity.getNeighborhood());
+        orm.setStreet(entity.getStreet());
+        orm.setNumber(entity.getNumber());
+        orm.setComplement(entity.getComplement());
 
         orm.setPersonalData(PersonalDataConverter.toORM(entity.getPersonalData()));
 

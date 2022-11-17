@@ -5,10 +5,12 @@ import com.workers.gateway.AddressGateway;
 import com.workers.gateway.exceptions.AddressNotFoundException;
 import com.workers.orm.AddressORM;
 import com.workers.queries.DBAddress;
+import org.springframework.stereotype.Service;
 
 import static com.workers.gateway.impl.converter.AddressConverter.toEntity;
 import static com.workers.gateway.impl.converter.AddressConverter.toORM;
 
+@Service
 public class AddressGatewayImpl implements AddressGateway {
 
     private DBAddress dbAddress;

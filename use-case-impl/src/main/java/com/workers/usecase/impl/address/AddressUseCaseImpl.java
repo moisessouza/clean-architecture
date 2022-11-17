@@ -118,7 +118,7 @@ public class AddressUseCaseImpl implements AddressUseCase {
         }
 
         if (!checkCityIsValid(addressInput.getCity())) {
-            return Optional.of(presenter.createError(addressInput, "address.error.invalid.state"));
+            return Optional.of(presenter.createError(addressInput, "address.error.invalid.city"));
         }
 
         if (!checkNeighborhoodIsValid(addressInput.getNeighborhood())) {
@@ -175,7 +175,7 @@ public class AddressUseCaseImpl implements AddressUseCase {
     }
 
     private boolean checkComplementIsValid(String complement) {
-        return StringUtils.hasText(complement);
+        return true;
     }
 
 }
