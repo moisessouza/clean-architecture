@@ -63,18 +63,19 @@ public class PhoneUseCaseImpl implements PhoneUseCase {
 
         try {
 
-            PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(input.getUserEmail());
-
             PhoneEntity entity = getPhoneEntityByEmail(input.getUserEmail());
 
             if (entity == null) {
                 entity = new PhoneEntity();
+
+                PersonalDataEntity personalDataEntity = personalDataGateway.findByEmail(input.getUserEmail());
+                entity.setPersonalData(personalDataEntity);
+
             }
 
             entity.setDdd(input.getDdd());
             entity.setDdi(input.getDdi());
             entity.setPhoneNumber(input.getPhoneNumber());
-            entity.setPersonalData(personalDataEntity);
 
             entity = phoneGateway.save(entity);
 

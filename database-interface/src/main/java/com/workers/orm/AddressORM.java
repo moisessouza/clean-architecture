@@ -24,6 +24,9 @@ public class AddressORM {
     @Column(name = "neighborhood", nullable = false)
     private String neighborhood;
 
+    @Column(name = "street", nullable = false)
+    private String street;
+
     @Column(name = "number", nullable = false)
     private String number;
 
