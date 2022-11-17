@@ -38,6 +38,7 @@ public class AddressPresenterImpl implements AddressPresenter {
         impl.setUserEmail(addressInput.getUserEmail());
 
         return impl;
+        
     }
 
     @Override
@@ -73,7 +74,6 @@ public class AddressPresenterImpl implements AddressPresenter {
         impl.setUserEmail(email);
 
         return impl;
-
 
     }
 
