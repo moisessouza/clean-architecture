@@ -32,10 +32,10 @@ public class AddressORM {
     @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "number", nullable = false)
+    @Column(name = "number")
     private String number;
 
-    @Column(name = "complement", nullable = false)
+    @Column(name = "complement")
     private String complement;
 
     @ManyToOne
