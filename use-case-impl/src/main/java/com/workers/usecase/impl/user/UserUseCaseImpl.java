@@ -80,6 +80,16 @@ public class UserUseCaseImpl implements UserUseCase {
             return userPresenter.createError(input, "user.error.email.invalid");
         }
 
+        try {
+
+            UserEntity user = userGateway.findByEmail(input.getEmail());
+
+            if (user != null) {
+                return userPresenter.createError(input, "user.error.already.exist");
+            }
+
+        } catch (UserNotFoundException e) {}
+
         return userPresenter.createValidateSuccess();
 
     }
