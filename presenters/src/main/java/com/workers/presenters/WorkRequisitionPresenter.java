@@ -10,4 +10,8 @@ public interface WorkRequisitionPresenter {
     WorkRequisitionOutput createError(WorkRequisitionInput input, String messageCode);
 
     WorkRequisitionOutput createSuccessFindEmail(List<WorkRequisitionEntity> workRequisitions, String messageCode);
+
+    WorkRequisitionOutput createSuccessFindId(WorkRequisitionEntity entity, String messageCode);
+
+    WorkRequisitionOutput createErrorFindId(WorkRequisitionInput input, String messageCode);
 }

@@ -2,6 +2,7 @@ package com.workers.usecase.impl.work.requisition;
 
 import com.workers.entities.WorkRequisitionEntity;
 import com.workers.gateway.WorkRequisitionGateway;
+import com.workers.gateway.exceptions.WorkRegistrationNotFoundException;
 import com.workers.presenters.WorkRequisitionPresenter;
 import com.workers.presenters.models.work.requisition.WorkRequisitionInput;
 import com.workers.presenters.models.work.requisition.WorkRequisitionOutput;
@@ -37,6 +38,25 @@ public class WorkRequisitionUseCaseImpl implements WorkRequisitionUseCase {
     }
 
     @Override
+    public WorkRequisitionOutput findById(WorkRequisitionInput input) {
+
+        try {
+
+            if (!checkIsValidId(input.getId())){
+                return presenter.createError(input, "work.requisition.error.invalid.id");
+            }
+
+            WorkRequisitionEntity entity = workRequisitionGateway.findById(input.getId());
+
+            return presenter.createSuccessFindId(entity, "work.requisition.success.find.id");
+
+        } catch (WorkRegistrationNotFoundException e) {
+            return presenter.createErrorFindId(input, "work.requisition.error.not.found");
+        }
+
+    }
+
+    @Override
     public WorkRequisitionOutput save(WorkRequisitionInput input) {
         return null;
     }
@@ -45,4 +65,9 @@ public class WorkRequisitionUseCaseImpl implements WorkRequisitionUseCase {
     public WorkRequisitionOutput delete(WorkRequisitionInput input) {
         return null;
     }
+
+    private boolean checkIsValidId(Long id) {
+        return id != null;
+    }
+
 }

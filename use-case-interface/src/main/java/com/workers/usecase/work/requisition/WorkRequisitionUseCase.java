@@ -7,6 +7,8 @@ public interface WorkRequisitionUseCase {
 
     WorkRequisitionOutput findByEmail(WorkRequisitionInput input);
 
+    WorkRequisitionOutput findById(WorkRequisitionInput input);
+
     WorkRequisitionOutput save(WorkRequisitionInput input);
 
     WorkRequisitionOutput delete(WorkRequisitionInput input);
