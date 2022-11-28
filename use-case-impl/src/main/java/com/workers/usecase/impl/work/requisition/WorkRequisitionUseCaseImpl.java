@@ -9,6 +9,7 @@ import com.workers.presenters.models.work.requisition.WorkRequisitionOutput;
 import com.workers.usecase.impl.helper.EmailHelper;
 import com.workers.usecase.work.requisition.WorkRequisitionUseCase;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -58,7 +59,25 @@ public class WorkRequisitionUseCaseImpl implements WorkRequisitionUseCase {
 
     @Override
     public WorkRequisitionOutput save(WorkRequisitionInput input) {
-        return null;
+
+        if (!checkIsValidTitle(input.getTitle())) {
+            return presenter.createError(input, "work.requisition.error.invalid.title");
+        }
+
+        if (!checkIsValidDescription(input.getDescription())) {
+            return presenter.createError(input, "work.requisition.error.invalid.description");
+        }
+
+        WorkRequisitionEntity entity = new WorkRequisitionEntity();
+
+        entity.setId(input.getId());
+        entity.setTitle(input.getTitle());
+        entity.setDescription(input.getDescription());
+
+        workRequisitionGateway.save(entity);
+
+        return presenter.createSuccess(entity, "work.requisition.success.save");
+
     }
 
     @Override
@@ -80,6 +99,14 @@ public class WorkRequisitionUseCaseImpl implements WorkRequisitionUseCase {
 
     private boolean checkIsValidId(Long id) {
         return id != null;
+    }
+
+    private boolean checkIsValidTitle(String title) {
+        return StringUtils.hasText(title);
+    }
+
+    private boolean checkIsValidDescription(String description) {
+        return StringUtils.hasText(description);
     }
 
 }

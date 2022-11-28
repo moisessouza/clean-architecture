@@ -14,4 +14,6 @@ public interface WorkRequisitionPresenter {
     WorkRequisitionOutput createSuccessFindId(WorkRequisitionEntity entity, String messageCode);
 
     WorkRequisitionOutput createErrorFindId(WorkRequisitionInput input, String messageCode);
+
+    WorkRequisitionOutput createSuccess(WorkRequisitionEntity entity, String messageCode);
 }
