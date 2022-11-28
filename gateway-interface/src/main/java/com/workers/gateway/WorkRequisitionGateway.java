@@ -11,7 +11,7 @@ public interface WorkRequisitionGateway {
 
     WorkRequisitionEntity save (WorkRequisitionEntity entity);
 
-    WorkRequisitionEntity delete (WorkRequisitionEntity entity);
+    WorkRequisitionEntity delete (Long id) throws WorkRegistrationNotFoundException;
 
     WorkRequisitionEntity findById(Long id) throws WorkRegistrationNotFoundException;
 }

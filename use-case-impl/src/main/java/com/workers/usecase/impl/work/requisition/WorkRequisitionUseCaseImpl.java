@@ -63,7 +63,19 @@ public class WorkRequisitionUseCaseImpl implements WorkRequisitionUseCase {
 
     @Override
     public WorkRequisitionOutput delete(WorkRequisitionInput input) {
-        return null;
+        try {
+
+            if (!checkIsValidId(input.getId())){
+                return presenter.createError(input, "work.requisition.error.invalid.id");
+            }
+
+            WorkRequisitionEntity entity = workRequisitionGateway.delete(input.getId());
+
+            return presenter.createSuccessFindId(entity, "work.requisition.success.delete");
+
+        } catch (WorkRegistrationNotFoundException e) {
+            return presenter.createErrorFindId(input, "work.requisition.error.not.found");
+        }
     }
 
     private boolean checkIsValidId(Long id) {
