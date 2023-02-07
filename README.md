@@ -1,2 +1,3 @@
-# plataforma-workers
-Plataforma para cadastro de profissionais autônomos
+# clean-architecture
+
+Projeto baseado no livro clean architecture
