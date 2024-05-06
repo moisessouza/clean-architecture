@@ -38,6 +38,12 @@ public class UserUseCaseImpl implements UserUseCase {
             return output;
         }
 
+        output = verifyIfEmailExist(userInput);
+
+        if (output.isError()) {
+            return output;
+        }
+
         UserEntity entity = new UserEntity();
         entity.setId(userInput.getId());
         entity.setEmail(userInput.getEmail());
@@ -80,16 +86,6 @@ public class UserUseCaseImpl implements UserUseCase {
             return userPresenter.createError(input, "user.error.email.invalid");
         }
 
-        try {
-
-            UserEntity user = userGateway.findByEmail(input.getEmail());
-
-            if (user != null) {
-                return userPresenter.createError(input, "user.error.already.exist");
-            }
-
-        } catch (UserNotFoundException e) {}
-
         return userPresenter.createValidateSuccess();
 
     }
@@ -99,6 +95,22 @@ public class UserUseCaseImpl implements UserUseCase {
         if (!StringUtils.hasText(input.getPassword())) {
             return userPresenter.createError(input,"user.error.password.empty");
         }
+
+        return userPresenter.createValidateSuccess();
+
+    }
+
+    private UserOutput verifyIfEmailExist(UserInput input) {
+
+        try {
+
+            UserEntity user = userGateway.findByEmail(input.getEmail());
+
+            if (user != null) {
+                return userPresenter.createError(input, "user.error.already.exist");
+            }
+
+        } catch (UserNotFoundException ignored) {}
 
         return userPresenter.createValidateSuccess();
 
